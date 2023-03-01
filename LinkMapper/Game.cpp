@@ -107,6 +107,7 @@ void Game::processEvents()
 
 void Game::update(sf::Time t_deltaTime)
 {
+	toolbar.update();
 }
 
 void Game::render()
@@ -123,7 +124,7 @@ void Game::render()
 
 	//UI
 	m_window.setView(m_window.getDefaultView());
-	toolbar.Draw();
+	toolbar.render();
 
 	
 	m_window.display();
