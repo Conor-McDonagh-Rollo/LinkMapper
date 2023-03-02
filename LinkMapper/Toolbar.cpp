@@ -2,10 +2,16 @@
 sf::Font* Button::font = nullptr;
 sf::RenderWindow* Button::window = nullptr;
 
+sf::Font* Ribbon::font = nullptr;
+sf::RenderWindow* Ribbon::window = nullptr;
+
+float Button::width = 100.0f;
+float Ribbon::width = 100.0f;
+
 void Toolbar::initialize()
 {
-	addButton("file");
-	addButton("edit");
+	Button::width = width;
+	Ribbon::width = width;
 }
 
 void Toolbar::render()

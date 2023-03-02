@@ -17,6 +17,8 @@ private:
 	void update(sf::Time t_deltaTime);
 	void render();
 
+	void initialize();
+
 	sf::RenderWindow m_window; 
 	sf::View m_view;
 	sf::Vector2f m_viewPos;

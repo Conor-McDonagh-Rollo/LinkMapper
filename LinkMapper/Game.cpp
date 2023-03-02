@@ -4,7 +4,7 @@
 
 Game::Game() :
 	m_window{ sf::VideoMode{ 1280U, 720U, 32U }, "LinkMapper" },
-	toolbar{ &m_window }
+	toolbar{ &m_window, 200 }
 {
 	sf::Image image;
 	image.loadFromFile("ASSETS//ICONS//linkmapper.png");
@@ -16,6 +16,8 @@ Game::Game() :
 	currentMap_s.setTexture(currentMap_t);
 
 	m_window.setView(m_view);
+
+	initialize();
 }
 
 void Game::run()
@@ -128,4 +130,26 @@ void Game::render()
 
 	
 	m_window.display();
+}
+
+void Game::initialize()
+{
+	toolbar.addButton("file");
+	toolbar.addButton("edit");
+	toolbar.addButton("tools");
+	toolbar.addButton("explorer");
+	toolbar.getButton("file").ribbon.addButton("save", []() { MessageBoxA(NULL, "Saved Sucessfully", "LinkMapper", MB_OK); });
+	toolbar.getButton("file").ribbon.addButton("save as", []() { MessageBoxA(NULL, "Saved Sucessfully", "LinkMapper", MB_OK); });
+	toolbar.getButton("file").ribbon.addButton("exit", []() { });
+	toolbar.getButton("edit").ribbon.addButton("zoom in", [=]() { 
+		zoom = 0.9f;
+		m_view.zoom(zoom); 
+	});
+	toolbar.getButton("edit").ribbon.addButton("zoom out", [=]() {
+		zoom = 1.1f;
+		m_view.zoom(zoom);
+	});
+	toolbar.getButton("edit").ribbon.addButton("preferences", []() {});
+	toolbar.getButton("edit").ribbon.addButton("project", []() {});
+
 }
